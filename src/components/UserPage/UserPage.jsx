@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
+import UserImages from './UserImages';
+import UserPost from './UserPost';
+
 
 function UserPage() {
   const dispatch = useDispatch()
@@ -22,22 +24,7 @@ function UserPage() {
     setImage('')
   }
 
-  const handleDelete = ( event, id) => {
-    event.preventDefault()
-   
-    dispatch({type: "DELETE_IMAGE", payload: [id] })
   
-  }
-        
-
-
-    
-    
-
-
-
-    const userImages = images.filter((pic) => pic.user_id === user.id);
-
 
     return (
       <>
@@ -47,24 +34,8 @@ function UserPage() {
           <p> your bio: {user.bio}</p>
           <LogOutButton className="btn" />
         </div>
-        <form onSubmit={sendImage}>
-          <label htmlFor="imageUrl">URL</label>
-          <input
-            id="imageUrl"
-            type="text"
-            value={image}
-            onChange={(event) => setImage(event.target.value)}
-          />
-          <button type="submit">Submit</button>
-          <ul>
-            {userImages.map((pic, index) => (
-              <li key={index}>
-                <img src={pic.url} alt={`Image ${index}`} />
-                <button key={pic.delete} onClick={(event)=> handleDelete(event, pic.image_id) } >DELETE</button>
-              </li>
-            ))}
-          </ul>
-        </form>
+        <UserPost/>
+        <UserImages/>
       </>
     );
   }
