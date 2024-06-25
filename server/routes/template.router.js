@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/images', (req, res) => {
+router.post('/', (req, res) => {
   const { url, user_id} = req.body
 
 const queryText = `
