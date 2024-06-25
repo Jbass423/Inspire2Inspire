@@ -7,7 +7,18 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   const queryText = `
-  SELECT * FROM "images";
+  SELECT 
+  "user".id AS user_id,
+  "user".username,
+  "user".bio,
+  images.id AS image_id,
+  images.url
+FROM 
+  "user"
+JOIN 
+  images ON "user".id = images.user_id
+WHERE 
+  "user".id = user_id;
   `;
   pool.query(queryText)
   .then((response)=>{
@@ -40,5 +51,20 @@ pool.query(queryText, [url, user_id])
 })
   // POST route code here
 });
+
+router.delete('/:id',(req,res)=>{
+  const { id } = req.params
+  const queryText = `
+  DELETE FROM "images" WHERE "id" = $1;
+  `
+  pool.query(queryText, [id])
+  .then((result)=>{
+    console.log('delete worked')
+    res.sendStatus(200)
+  })
+  .catch((error)=>{
+    console.log("error in delete router", error)
+  })
+  })
 
 module.exports = router;

@@ -5,6 +5,7 @@ function* fetchImages (action){
     try{
         const response = yield axios.get('api/images', {params: action.payload});
         const setImages = response.data 
+        console.log("checking data response ", setImages);
 
         yield put ({ type: 'SET_IMAGES', payload: setImages});
 
