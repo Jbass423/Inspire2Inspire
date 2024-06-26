@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* deleteImage( action){
 try{
-    const id = action.payload
+    const {id} = action.payload
     yield axios.delete(`/api/images/${id}`)
         yield put ({ type: "DELETE_WORKED", payload: id })
     

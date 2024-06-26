@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-
+import CommentSection from '../CommentSection/CommentSection';
 
 
 const UserImages = ()=> { 
@@ -8,12 +8,13 @@ const UserImages = ()=> {
     const images = useSelector(store => store.images)
     const user = useSelector((store) => store.user);
 
+        const imageId = images.id
  
 
     const handleDelete = ( event, id) => {
         event.preventDefault()
        
-        dispatch({type: "DELETE_IMAGE", payload: [id] })
+        dispatch({type: "DELETE_IMAGE", payload: images.id })
       
       }
 
@@ -25,7 +26,8 @@ const UserImages = ()=> {
             {userImages.map((pic, index) => (
               <li key={index}>
                 <img src={pic.url} alt={`Image ${index}`} />
-                <button key={pic.delete} onClick={(event)=> handleDelete(event, pic.image_id) } >DELETE</button>
+               <button key={pic.delete} onClick={(event)=> handleDelete(event, pic.image_id) } >DELETE</button>
+                <CommentSection imageId={imageId}/>
               </li>
             ))}
           </ul>

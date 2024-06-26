@@ -14,8 +14,19 @@ function* fetchPoems (action){
     }
 }
 
+function* addPoem (action){
+    try{
+        const response = yield axios.post('/api/poems', action.payload)
+        console.log("checking post poem data", response.data)
+        yield put({type: 'FETCH_POEMS'})
+    } catch (error){
+        console.log("error in post addpoem", error)
+    }
+}
+
 function* poemsSaga (){
    yield takeLatest('FETCH_POEMS', fetchPoems)
+   yield takeLatest('ADD_POEM', addPoem)
 }
 
 export default poemsSaga
