@@ -18,4 +18,23 @@ router.get('/',(req, res)=>{
         })
 })
 
+router.post('/', (req, res) => {
+    const { poems, user_id} = req.body
+  
+  const queryText = `
+  INSERT INTO "poems" ("poems", "user_id")
+  VALUES ( $1, $2);
+  `;
+  pool.query(queryText, [ poems , user_id])
+  .then((response)=>{
+    console.log("poem uploaded");
+    res.status(201).send(response.rows)
+  })
+  .catch((error)=>{
+    console.log("poem post failed", error );
+    res.sendStatus(500)
+  })
+    // POST route code here
+  });
+
 module.exports = router;
