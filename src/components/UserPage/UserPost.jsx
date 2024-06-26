@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
 const UserPost = () => {
+    const user = useSelector((store) => store.user);
+    const dispatch = useDispatch()
     const [image, setImage] = useState("")
 
     const sendImage = (event) => {

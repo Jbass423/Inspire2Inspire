@@ -9,11 +9,11 @@ import { useDispatch } from 'react-redux';
 
 
 function InfoPage() {
-  const images =useSelector(store => store.images)
-  //console.log("checking images", images )
+  const poems =useSelector(store => store.poems)
+  console.log("checking poems", poems);
   const dispatch = useDispatch()
-  useEffect(()=>{
-    dispatch({ type: 'FETCH_IMAGES', payload: {} }); // Dispatch action to fetch images on component mount
+  useEffect(() => {
+    dispatch({type: 'FETCH_POEMS'});
   }, [dispatch]);
 
   return (

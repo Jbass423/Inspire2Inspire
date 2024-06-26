@@ -11,22 +11,15 @@ import UserPost from './UserPost';
 function UserPage() {
   const dispatch = useDispatch()
   const user = useSelector((store) => store.user);
-  const [image, setImage] = useState("")
-  const images = useSelector(store => store.images)
+ 
 
   useEffect(() => {
     dispatch({ type: 'FETCH_IMAGE' })
   })
 
-  const sendImage = (event ) => {
-    event.preventDefault()
-    dispatch({ type: 'SEND_IMAGE', payload: { url: image, user_id: user.id } })
-    setImage('')
-  }
+ 
 
-  
-
-    return (
+return (
       <>
         <div className="container">
           <h2>Welcome, {user.username}!</h2>

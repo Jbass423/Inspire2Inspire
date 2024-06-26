@@ -3,6 +3,7 @@ const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT || 5001;
 const imagesRouter = require('./routes/template.router');
+const poemsRouter = require('./routes/poems.router')
 
 // Middleware Includes
 const sessionMiddleware = require('./modules/session-middleware');
@@ -26,6 +27,7 @@ app.use(passport.session());
 // Routes
 app.use('/api/user', userRouter);
 app.use('/api/images', imagesRouter);
+app.use('/api/poems', poemsRouter)
 
 // Listen Server & Port
 app.listen(PORT, () => {
