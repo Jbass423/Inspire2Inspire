@@ -40,19 +40,42 @@ router.post('/', (req, res) => {
 
 router.delete('/:id',(req,res)=>{
     const {id} = req.params
-    console.log('Request Params:', req.params);
+    
     const queryText = `
     DELETE FROM "poems" WHERE "id" = $1; 
     `
 
     pool.query(queryText, [id])
     .then((result)=>{
-        console.log("delete worked ");
+       
         res.sendStatus(200)
     })
     . catch((error)=>{
         console.log("erroe in delete router", error );
     })
 })
+
+router.put('/likes/:id', (req, res) => {
+    const {id} = req.params
+    
+    
+  
+    const queryText = `
+     UPDATE "poems"
+     SET "likes" = "likes" + 1 
+     WHERE "id" = $1;
+     `;
+    
+     pool.query(queryText, [id])
+     .then((result)=>{
+      
+      console.log(result);
+      res.sendStatus(200);
+    })
+      .catch((error)=>{
+        console.error("error in put", error );
+        res.sendStatus(500);
+      });
+  });
 
 module.exports = router;

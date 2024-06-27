@@ -11,7 +11,10 @@ const UserImages = ()=> {
 console.log("checking data in images id store" , images);
       
         
-        
+        const handleLikes = ()=>{ 
+            dispatch( "ADD_LIKE",  action.payload )
+
+        }
  
 
 const handleDelete = async (id) => {
@@ -31,6 +34,7 @@ const handleDelete = async (id) => {
             {userImages.map((pic, index) => (
               <li key={index}>
                 <img src={pic.url} alt={`Image ${index}`} />
+               
                <button key={pic.delete} onClick={()=> handleDelete( pic.id) } >DELETE</button>
                 <CommentSection />
               </li>

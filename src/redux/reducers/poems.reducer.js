@@ -7,7 +7,11 @@ const poems = (state= [], action) =>{
         case "UPDATE_POEM":
             return [...state, action.payload] ;
         case "DELETE_POEM":
-            return  state.filter(poems => poems.id !== action.payload.id);        
+            return  state.filter(poem => poem.id !== action.payload.id);   
+        case  "ADD_LIKE":
+                return state.map(poem => 
+                    poem.id === action.payload.id ? { ...poem, likes: poem.likes + 1 } : poem
+                );        
         default:
              return state    
     }

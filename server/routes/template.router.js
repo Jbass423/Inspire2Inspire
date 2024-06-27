@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   const queryText = `
-   SELECT id, url, user_id FROM "images";
+   SELECT * FROM "images";
   `;
   pool.query(queryText)
   .then((response)=>{
@@ -57,5 +57,7 @@ router.delete('/:id',(req,res)=>{
     console.log("error in delete router", error)
   })
   })
+
+  
 
 module.exports = router;

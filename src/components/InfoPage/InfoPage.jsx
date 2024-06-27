@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import CommentSection from '../CommentSection/CommentSection';
+import CommentMapping from '../CommentSection/CommentMapping';
 // This is one of our simplest components
 // It doesn't have local state
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -12,32 +14,30 @@ import { useState } from 'react';
 function InfoPage() {
   const poems =useSelector(store => store.poems)
   const user =useSelector(store => store.user)
+  const images = useSelector(store => store.images)
   console.log("checking poems", poems);
-  const [ newPoem, setPoem]= useState('')
+ 
 
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch({type: 'FETCH_POEMS'});
-  }, [dispatch]);
 
-const handlePoem = ()=>{
-  dispatch({type: 'ADD_POEM', payload: {poems: newPoem, user_id: user.id}})
-  setPoem("")
-}
 
-  return (
-    <div className="container">
-      <p>Info Page</p>
-        <input 
-          type="text"
-          value={newPoem}
-          onChange={(e)=> setPoem(e.target.value)}
-          placeholder='add poem'
-        />
-        <button onClick={handlePoem}>add </button>
-    </div>
-  );
+
+
+
+  return ( <>
+
+  <ul>
+    {images.map((img)=>(
+      <li> 
+        <img src={img.url}   />
+        <CommentSection/>
+        <CommentMapping/>
+      </li>
+    ))}
+  </ul>
+  
+  </>
+  )
 }
 
 export default InfoPage;

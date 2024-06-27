@@ -12,8 +12,15 @@ function* fetchImages (action){
     } catch (error){
         console.log("failed to get set images ", error );
     }
-}function* imagesSaga() {
+}
+
+
+
+
+
+function* imagesSaga() {
     yield takeLatest('FETCH_IMAGES', fetchImages);
+   
   }
 
 export default imagesSaga

@@ -14,6 +14,18 @@ function* fetchPoems (action){
     }
 }
 
+function* addLike(action) {
+    try {
+        const { id } = action.payload;
+        console.log("checking id in like", id );
+        const response = yield axios.put(`/api/poems/likes/${id}`);
+        yield put({ type: 'UPDATE_LIKE', payload: id });
+    } catch (error) {
+        console.error('Error updating likes:', error);
+        yield put({ type: 'UPDATE_LIKE_FAILURE', error });
+    }
+}
+
 function* addPoem (action){
     try{
         
@@ -39,6 +51,7 @@ function* poemsSaga (){
    yield takeLatest('FETCH_POEMS', fetchPoems)
    yield takeLatest('ADD_POEM', addPoem)
    yield takeLatest('DELETE_POEM', deletePoem)
+   yield takeLatest('ADD_LIKE', addLike)
 }
 
 export default poemsSaga
