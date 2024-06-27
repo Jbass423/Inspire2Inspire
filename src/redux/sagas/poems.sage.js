@@ -16,6 +16,7 @@ function* fetchPoems (action){
 
 function* addPoem (action){
     try{
+        
         const response = yield axios.post('/api/poems', action.payload)
         console.log("checking post poem data", response.data)
         yield put({type: 'FETCH_POEMS'})
@@ -24,9 +25,20 @@ function* addPoem (action){
     }
 }
 
+function* deletePoem(action) {
+    try {
+      const { id } = action.payload;
+       yield axios.delete(`/api/poems/${id}`);
+      yield put({ type: 'DELETE_POEM', payload: id });
+    } catch (error) {
+      console.log('Error in deletePoem saga', error);
+    }
+}
+
 function* poemsSaga (){
    yield takeLatest('FETCH_POEMS', fetchPoems)
    yield takeLatest('ADD_POEM', addPoem)
+   yield takeLatest('DELETE_POEM', deletePoem)
 }
 
 export default poemsSaga

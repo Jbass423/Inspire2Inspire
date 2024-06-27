@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/',(req, res)=>{
     const queryText = `
-    SELECT "poems" FROM "poems";
+    SELECT * FROM "poems";
     `
     pool.query(queryText)
     .then((response)=>{
@@ -38,8 +38,9 @@ router.post('/', (req, res) => {
   });
 
 
-router.delete('/:id',(res,req)=>{
+router.delete('/:id',(req,res)=>{
     const {id} = req.params
+    console.log('Request Params:', req.params);
     const queryText = `
     DELETE FROM "poems" WHERE "id" = $1; 
     `

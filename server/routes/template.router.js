@@ -7,18 +7,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   const queryText = `
-  SELECT 
-  "user".id AS user_id,
-  "user".username,
-  "user".bio,
-  images.id AS image_id,
-  images.url
-FROM 
-  "user"
-JOIN 
-  images ON "user".id = images.user_id
-WHERE 
-  "user".id = user_id;
+   SELECT id, url, user_id FROM "images";
   `;
   pool.query(queryText)
   .then((response)=>{
@@ -27,6 +16,7 @@ WHERE
   })
   .catch ((error)=>{
     console.log("failed in images get route ", error );
+    res.sendStatus(500)
   })
 });
 
@@ -54,6 +44,7 @@ pool.query(queryText, [url, user_id])
 
 router.delete('/:id',(req,res)=>{
   const { id } = req.params
+  console.log('Deleting image with ID:', id)
   const queryText = `
   DELETE FROM "images" WHERE "id" = $1;
   `

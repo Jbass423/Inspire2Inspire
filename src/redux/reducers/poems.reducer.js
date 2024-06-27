@@ -7,7 +7,7 @@ const poems = (state= [], action) =>{
         case "UPDATE_POEM":
             return [...state, action.payload] ;
         case "DELETE_POEM":
-            return  state.filter(poem => poem.id !== action.payload.id);        
+            return  state.filter(poems => poems.id !== action.payload.id);        
         default:
              return state    
     }
