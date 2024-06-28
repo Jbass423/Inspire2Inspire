@@ -23,23 +23,43 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-  const { url, user_id} = req.body
+// router.post('/', (req, res) => {
+//   const { url, user_id} = req.body
 
-const queryText = `
-INSERT INTO "images" ("url", "user_id")
-VALUES ( $1, $2);
-`;
-pool.query(queryText, [url, user_id])
-.then((response)=>{
-  console.log("images uploaded");
-  res.status(201).send(response.rows)
-})
-.catch((error)=>{
-  console.log("image post failed", error );
-  res.sendStatus(500)
-})
-  // POST route code here
+// const queryText = `
+// INSERT INTO "images" ("url", "user_id")
+// VALUES ( $1, $2);
+// `;
+// pool.query(queryText, [url, user_id])
+// .then((response)=>{
+//   console.log("images uploaded");
+//   res.status(201).send(response.rows)
+// })
+// .catch((error)=>{
+//   console.log("image post failed", error );
+//   res.sendStatus(500)
+// })
+//   // POST route code here
+// });
+
+router.post('/', (req, res) => {
+  const { url, user_id } = req.body;
+
+  const queryText = `
+  INSERT INTO "images" ("url", "user_id")
+  VALUES ($1, $2)
+  RETURNING id;
+  `;
+  pool.query(queryText, [url, user_id])
+  .then((response) => {
+    console.log("Image uploaded");
+    const imageId = response.rows[0].id;
+    res.status(201).json({ imageId });
+  })
+  .catch((error) => {
+    console.log("Image POST failed", error);
+    res.sendStatus(500);
+  });
 });
 
 router.delete('/:id',(req,res)=>{
