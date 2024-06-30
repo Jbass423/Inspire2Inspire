@@ -28,6 +28,16 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/images', imagesRouter);
 app.use('/api/poems', poemsRouter)
+app.get('/api/images/:imageId', (req, res) => {
+  const imageId = parseInt(req.params.imageId);
+  const image = images.find(img => img.id === imageId);
+
+  if (!image) {
+    return res.status(404).json({ error: 'Image not found' });
+  }
+
+  res.json(image);
+});
 
 // Listen Server & Port
 app.listen(PORT, () => {

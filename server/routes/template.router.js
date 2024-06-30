@@ -78,6 +78,27 @@ router.delete('/:id',(req,res)=>{
   })
   })
 
+  router.get('/:imageId', async (req, res) => {
+    const imageId = req.params.imageId;
+  
+    try {
+      const queryText = `
+        SELECT * FROM "images" 
+        WHERE "id" = $1;
+      `;
+      const response = await pool.query(queryText, [imageId]);
+  
+      if (response.rows.length === 0) {
+        return res.status(404).json({ error: "Image not found" });
+      }
+  
+      res.status(200).json(response.rows[0]); 
+    } catch (error) {
+      console.error("Failed to fetch image details:", error);
+      res.sendStatus(500); 
+    }
+  });
+  
   
 
 module.exports = router;

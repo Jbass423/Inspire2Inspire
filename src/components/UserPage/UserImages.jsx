@@ -15,13 +15,11 @@ const UserImages = () => {
   };
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`/api/images/${id}`);
+   
+     
       dispatch({ type: "DELETE_IMAGE", payload: id });
-    } catch (error) {
-      console.error("Error deleting image:", error);
-    }
-  };
+  }
+  
 
   const userImages = images.filter((pic) => pic.user_id === user.id);
 
