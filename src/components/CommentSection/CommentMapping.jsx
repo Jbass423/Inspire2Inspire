@@ -51,8 +51,7 @@ const CommentMapping = () => {
             <Tr>
               <Th>Poem</Th>
               <Th>Likes</Th>
-              <Th>Image</Th>
-              <Th>Actions</Th>
+              
             </Tr>
           </Thead>
           <Tbody>
@@ -60,15 +59,7 @@ const CommentMapping = () => {
               <Tr key={index}>
                 <Td>{poem.poems}</Td>
                 <Td>{poem.likes}</Td>
-                <Td>
-                  {poem.image_id && (
-                    <img
-                      src={images.find(img => img.id === poem.image_id)?.url}
-                      alt="Poem Image"
-                      style={{ width: '50px', height: '50px' }}
-                    />
-                  )}
-                </Td>
+                
                 <Td>
                   <button onClick={() => handleLikes(poem.id)}>
                     <FavoriteIcon />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CommentSection from '../CommentSection/CommentSection';
-import axios from 'axios';
+
 import { ImageList, ImageListItem } from '@mui/material';
 
 const UserImages = () => {
@@ -35,7 +35,7 @@ const UserImages = () => {
           />
           <button onClick={() => handleDelete(pic.id)}>DELETE</button>
           <button onClick={() => handleLikes(pic.id)}>LIKE</button>
-          <CommentSection imageId={pic.id} />
+          
         </ImageListItem>
       ))}
     </ImageList>

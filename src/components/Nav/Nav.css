@@ -16,7 +16,8 @@
 .nav-title {
   font-size: 24px;
   font-weight: 700;
-  color: #f2f2f2;
+  color: rgb(0, 0, 0);
+  background: radial-gradient(circle, rgba(63,94,251,1) 28%, rgba(212,70,252,1) 100%);
   padding-left: 10px;
   margin: 0;
 }
@@ -40,3 +41,4 @@
 .navLink:hover {
   background-color: #008183;
 }
+

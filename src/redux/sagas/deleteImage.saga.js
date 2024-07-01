@@ -8,7 +8,7 @@ try{
         yield put ({ type: "DELETE_WORKED", payload: id })
     
 } catch(error){
-    console.log("error in deleyt gen fun", error )
+    console.log("error in delete gen fun", error )
 }
 
 }

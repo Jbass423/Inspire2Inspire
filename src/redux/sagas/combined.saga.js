@@ -3,16 +3,16 @@ import axios from "axios";
 
 function* fetchcombined (action){
     try{
-        const response = yield axios.get('/api/images/combined');
-        yield put ({type: 'SET_COMBINED', payload: action.payload })
-    }catch (error){
-        console.log("error in combined saga", error);
-        
+        const response = yield axios.get(`/api/poems?imageId=${action.payload}`);
+        yield put({ type: 'SET_COMBINED', payload: response.data });
+    } catch (error) {
+        console.error('Error fetching poems by image ID:', error);
     }
 }
 
+
 function* combinedSaga (){
-    yield takeLatest("FETCH_COMBINED", fetchcombined)
+    yield takeLatest("FETCH_POEMS_BY_IMAGE_ID", fetchcombined)
 }
 
 export default  combinedSaga

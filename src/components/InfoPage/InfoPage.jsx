@@ -17,8 +17,7 @@ const InfoPage = () => {
 
   return (
     <div style={{
-      background: 'rgb(0,36,33)',
-      background: 'linear-gradient(90deg, rgba(0,36,33,1) 0%, rgba(9,121,25,1) 35%, rgba(0,153,255,1) 100%)',
+    
       padding: '20px',
       borderRadius: '8px',
       display: 'flex',
