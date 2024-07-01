@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import RandomImage from '../RandomImage/RandomImage';
 
 
 function Nav() {
@@ -23,6 +24,12 @@ function Nav() {
             Login / Register
           </Link>
         )}
+
+<nav>
+      <Link to="/images/:imageId">Random</Link>
+      <RandomImage />
+      {/* Add other navigation links as needed */}
+    </nav>
 
         {/* If a user is logged in, show these links */}
         {user.id && (

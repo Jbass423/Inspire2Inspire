@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import UserImages from './UserImages';
 import UserPost from './UserPost';
+import RandomImage from '../RandomImage/RandomImage';
 
 
 function UserPage() {
@@ -27,6 +28,7 @@ function UserPage() {
         <p> your bio: {user.bio}</p>
         <LogOutButton className="btn" />
       </div>
+      <RandomImage/>
       <UserPost />
       <UserImages />
     </>
