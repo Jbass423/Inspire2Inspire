@@ -3,7 +3,7 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import imagesSaga from './images.saga';
-import uploadImage from './PostImage.saga';
+
 import Delete from './deleteImage.saga';
 import poemsSaga from './poems.sage';
 import combinedSaga from './combined.saga';
@@ -21,7 +21,6 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     imagesSaga(),
-    uploadImage(), 
     Delete(),
     poemsSaga(),
     combinedSaga()

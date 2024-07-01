@@ -7,6 +7,7 @@ import CommentMapping from "../CommentSection/CommentMapping";
 const DetailComments = ({imageId})=>{
     const dispatch = useDispatch()
     const combine = useSelector(store => store.combined)
+    console.log("checking", combine)
     
     
     useEffect(() => {
@@ -20,17 +21,18 @@ const DetailComments = ({imageId})=>{
 
 return (
   <div>
-    <h3>Comments</h3>
-    {filteredComments.length === 0 ? (
-      <p>y you no work</p>
-    ) : (
-      filteredComments.map(comment => (
-        <CommentMapping key={comment.image_id} comment={comment} />
-        
-      ))
-    )}
-     <CommentSection imageId={imageId} />
-  </div>
+      <h3>Comments</h3>
+      {filteredComments.length === 0 ? (
+        <p>No comments for this image</p>
+      ) : (
+        filteredComments.map(comment => (
+          <div key={comment.id}>
+            <p>{comment.poems}</p>
+          </div>
+        ))
+      )}
+      <CommentSection imageId={imageId} />
+    </div>
 );
 };
 

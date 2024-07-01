@@ -1,6 +1,19 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads'); // Destination folder for uploads
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname); // Unique filename
+  }
+});
+
+// Initialize multer with the configured storage
+const upload = multer({ storage: storage });
 
 /**
  * GET route template
@@ -20,61 +33,42 @@ router.get('/', (req, res) => {
   })
 });
 
-/**
- * POST route template
- */
-// router.post('/', (req, res) => {
-//   const { url, user_id} = req.body
 
-// const queryText = `
-// INSERT INTO "images" ("url", "user_id")
-// VALUES ( $1, $2);
-// `;
-// pool.query(queryText, [url, user_id])
-// .then((response)=>{
-//   console.log("images uploaded");
-//   res.status(201).send(response.rows)
-// })
-// .catch((error)=>{
-//   console.log("image post failed", error );
-//   res.sendStatus(500)
-// })
-//   // POST route code here
-// });
 
-router.post('/', (req, res) => {
-  const { url, user_id } = req.body;
 
-  const queryText = `
-  INSERT INTO "images" ("url", "user_id")
-  VALUES ($1, $2)
-  RETURNING id;
-  `;
-  pool.query(queryText, [url, user_id])
-  .then((response) => {
-    console.log("Image uploaded");
-    const imageId = response.rows[0].id;
-    res.status(201).json({ imageId });
-  })
-  .catch((error) => {
-    console.log("Image POST failed", error);
-    res.sendStatus(500);
-  });
-});
+ router.post('/', (req, res) => {
+   const { url, user_id } = req.body;
 
-router.delete('/:id',(req,res)=>{
-  const { id } = req.params
-  console.log('Deleting image with ID:', id)
-  const queryText = `
-  DELETE FROM "images" WHERE "id" = $1;
-  `
-  pool.query(queryText, [id])
-  .then((result)=>{
-    console.log('delete worked')
+   const queryText = `
+   INSERT INTO "images" ("url", "user_id")
+   VALUES ($1, $2)
+   RETURNING id;
+   `;
+   pool.query(queryText, [url, user_id])
+   .then((response) => {
+     console.log("Image uploaded");
+     const imageId = response.rows[0].id;
+     res.status(201).json({ imageId });
+   })
+   .catch((error) => {
+     console.log("Image POST failed", error);
+     res.sendStatus(500);
+   });
+ });
+
+ router.delete('/:id',(req,res)=>{
+   const { id } = req.params
+   console.log('Deleting image with ID:', id)
+   const queryText = `
+   DELETE FROM "images" WHERE "id" = $1;
+   `
+   pool.query(queryText, [id])
+   .then((result)=>{
+     console.log('delete worked')
     res.sendStatus(200)
   })
   .catch((error)=>{
-    console.log("error in delete router", error)
+     console.log("error in delete router", error)
   })
   })
 
@@ -98,6 +92,10 @@ router.delete('/:id',(req,res)=>{
       res.sendStatus(500); 
     }
   });
+  
+
+
+ 
   
   
 

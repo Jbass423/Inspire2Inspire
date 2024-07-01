@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     const imageId = req.query.imageId;
+    console.log('checking image id ', imageId)
     const queryText = 'SELECT * FROM poems WHERE image_id = $1';
   
     pool.query(queryText, [imageId])

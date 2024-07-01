@@ -8,7 +8,7 @@ import CommentMapping from './CommentMapping';
 
 
 
-function CommentSection({ imagesId }) {
+function CommentSection({ imageId }) {
   const images = useSelector(store => store.images)
   const poems = useSelector(store => store.poems)
   const user = useSelector(store => store.user)
@@ -24,13 +24,13 @@ function CommentSection({ imagesId }) {
   }, [dispatch]);
 
   const handlePoem = () => {
-    dispatch({ type: 'ADD_POEM', payload: { poems: newPoem, user_id: user.id, image_id: images.id } })
+    dispatch({ type: 'ADD_POEM', payload: { poems: newPoem, user_id: user.id, image_id: imageId } })
     setPoem("")
   }
 
   return (
     <div className="container">
-      <p>Info Page</p>
+      <p></p>
       <input
         type="text"
         value={newPoem}
@@ -38,7 +38,7 @@ function CommentSection({ imagesId }) {
         placeholder='add poem'
       />
       <button onClick={handlePoem}><ChatIcon /> </button>
-      <CommentMapping />
+      
     </div>
   );
 }

@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const multer = require('multer');
+const path = require('path');
 require('dotenv').config();
 const PORT = process.env.PORT || 5001;
 const imagesRouter = require('./routes/template.router');
@@ -38,6 +40,8 @@ app.get('/api/images/:imageId', (req, res) => {
 
   res.json(image);
 });
+
+
 
 // Listen Server & Port
 app.listen(PORT, () => {
