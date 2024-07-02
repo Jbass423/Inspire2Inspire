@@ -14,8 +14,8 @@ const UserImages = () => {
     dispatch({ type: "ADD_LIKE", payload: id });
   };
 
-  const handleDelete = async (id) => {
-   
+  const handleDelete = (id,event) => {
+    event.stopPropagation();
      
       dispatch({ type: "DELETE_IMAGE", payload: id });
   }
@@ -33,7 +33,7 @@ const UserImages = () => {
             alt={`Image ${index}`}
             loading="lazy"
           />
-          <button onClick={() => handleDelete(pic.id)}>DELETE</button>
+          <button onClick={() => handleDelete(pic.id , event)}>DELETE</button>
           <button onClick={() => handleLikes(pic.id)}>LIKE</button>
           
         </ImageListItem>

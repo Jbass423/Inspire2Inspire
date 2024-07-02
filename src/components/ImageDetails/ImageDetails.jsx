@@ -35,7 +35,7 @@ const ImageDetails = () => {
       <img src={image.url} alt={`Image ${image.id}`} />
       <DetailComments imageId={image.id} />
       <button onClick={returnHome}>Home</button>
-      <CommentMapping/>
+      
     </div>
   );
 };

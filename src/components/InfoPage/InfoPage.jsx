@@ -11,7 +11,8 @@ const InfoPage = () => {
     history.push(`/images/${imageId}`);
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id,event) => {
+    event.stopPropagation();
     dispatch({type: "DELETE_IMAGE", payload: id})
   };
 
@@ -35,7 +36,7 @@ const InfoPage = () => {
           <div style={{ padding: '10px' }}>
             <h3>{`Image ${img.id}`}</h3>
             <p>{img.description}</p>
-            <button onClick={(e) => { e.stopPropagation(); handleDelete(img.id); }}>Delete</button>
+            <button onClick={(e) => { e.stopPropagation(); handleDelete(img.id,event); }}>Delete</button>
           </div>
         </div>
       ))}
