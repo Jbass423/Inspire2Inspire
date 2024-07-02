@@ -3,9 +3,10 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import imagesSaga from './images.saga';
-import uploadImage from './PostImage';
+
 import Delete from './deleteImage.saga';
 import poemsSaga from './poems.sage';
+import combinedSaga from './combined.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -20,8 +21,8 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     imagesSaga(),
-    uploadImage(), 
     Delete(),
     poemsSaga(),
+    combinedSaga()
   ]);
 }

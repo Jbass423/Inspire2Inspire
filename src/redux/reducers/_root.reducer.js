@@ -3,6 +3,8 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import images from './images.reducer';
 import poems from './poems.reducer';
+import combined from './combined.reducer';
+import imageDetails from './ imageDetails.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,6 +17,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   images, 
   poems,
+  combined,
+  imageDetails,
 });
 
 export default rootReducer;

@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import ImageDetails from '../ImageDetails/ImageDetails';
 
 import './App.css';
 
@@ -96,6 +97,9 @@ function App() {
             }
           </Route>
 
+          <Route exact path="/images/:imageId">
+            <ImageDetails />
+          </Route>
           <Route
             exact
             path="/home"

@@ -1,15 +1,14 @@
-const images = (state=[], action) =>{
-    switch (action.type){
+const images = (state = [], action) => {
+    switch (action.type) {
         case "SET_IMAGES":
             return action.payload;
-        case "SEND_IMAGE":
+        case "UPLOAD_DONE":
             return [...state, action.payload]; 
         case "DELETE_IMAGE":
             return state.filter(image => image.id !== action.payload);   
         default:
-            return state 
+            return state;
     }
-        
+};
 
-}
-export default images 
+export default images;
