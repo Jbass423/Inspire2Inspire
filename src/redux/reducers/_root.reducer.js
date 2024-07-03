@@ -5,6 +5,7 @@ import images from './images.reducer';
 import poems from './poems.reducer';
 import combined from './combined.reducer';
 import imageDetails from './ imageDetails.reducer';
+import editPoem from './editPoem.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   poems,
   combined,
   imageDetails,
+  editPoem,
 });
 
 export default rootReducer;

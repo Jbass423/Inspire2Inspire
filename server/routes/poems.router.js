@@ -74,4 +74,22 @@ router.put('/likes/:id', (req, res) => {
       });
   });
 
+  router.put('/:id', (req, res) => {
+   
+    const poemId  = req.params.id
+    const { poem } = req.body
+    console.log('Received poemId:', poemId);
+    console.log('Received poem:', poem);
+    const queryText = `UPDATE "poems" SET "poems" = $1 WHERE "id" = $2;`;
+    pool.query(queryText, [poem, poemId])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${queryText}`, error);
+            res.sendStatus(500);
+        });
+});
+
+
 module.exports = router;

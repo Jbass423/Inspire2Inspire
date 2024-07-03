@@ -12,9 +12,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 const DetailComments = ({imageId})=>{
+    const history = useHistory()
     const dispatch = useDispatch()
     const combine = useSelector(store => store.combined)
     console.log("checking", combine)
@@ -32,6 +34,14 @@ const DetailComments = ({imageId})=>{
 
 
     };
+
+    const handleEditClick = (poem) => {
+        
+        dispatch({ type:'SET_EDIT_POEM', payload: poem})
+    
+       
+        history.push('/edit')
+      }
 
     
     
@@ -73,6 +83,7 @@ return (
                   <button onClick={(event) => deleteComment(event, comment.id)}>
                     <DeleteIcon />
                   </button>
+                  <button onClick={handleEditClick}>Edit!</button>
                 </TableCell>
               </TableRow>
             ))}
