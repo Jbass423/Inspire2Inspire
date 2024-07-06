@@ -1,17 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import RandomImage from '../RandomImage/RandomImage';
-
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -27,7 +25,7 @@ function Nav() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/home" className="nav-title" style={{ color: 'inherit', textDecoration: 'none' }}>
@@ -54,7 +52,7 @@ function Nav() {
             About
           </Button>
           <Button color="inherit" component={RandomImage}>
-            Random
+            
           </Button>
         </Toolbar>
       </AppBar>

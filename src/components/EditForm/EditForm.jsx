@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-function EditForm({poemId}) {
+function EditForm(id) {
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -43,9 +43,10 @@ function EditForm({poemId}) {
 
       <form onSubmit={handleSubmit}>
         <input
-          onChange={(event) => handleChange(event)}
+          onChange={(event) => handleChange(event )}
           placeholder='change your poem '
           value={editPoems.poem}
+          
         />
         <input type='submit' value='Update Poem' />
       </form>

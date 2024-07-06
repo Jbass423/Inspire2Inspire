@@ -30,13 +30,15 @@ const ImageDetails = () => {
   }
 
   return (
-    <div>
-      <h2>look at this art</h2>
-      <img src={image.url} alt={`Image ${image.id}`} />
-      <DetailComments imageId={image.id} />
-      <button onClick={returnHome}>Home</button>
-      
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ marginRight: '20px' }}>
+      <h2>Look at this art</h2>
+      <img src={image.url} alt={`Image ${image.id}`} style={{ maxWidth: '400px', maxHeight: '400px' }} />
     </div>
+    <div>
+      <DetailComments imageId={image.id} />
+    </div>
+  </div>
   );
 };
 

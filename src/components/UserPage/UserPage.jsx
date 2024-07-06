@@ -12,6 +12,8 @@ import './UserPage.css'
 function UserPage() {
   const dispatch = useDispatch()
   const user = useSelector((store) => store.user);
+  const fav = useSelector((store)=> store.favorites)
+  console.log("checking fav", fav)
 
 
   useEffect(() => {
