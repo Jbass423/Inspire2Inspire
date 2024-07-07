@@ -22,6 +22,7 @@ const UserImages = () => {
   
 
   const userImages = images.filter((pic) => pic.user_id === user.id);
+  console.log("checking filt" , userImages);
 
   return (
     <ImageList sx={{ width: 700, height: 550 }} cols={3} rowHeight={164}>
@@ -34,7 +35,7 @@ const UserImages = () => {
             loading="lazy"
           />
           <button onClick={() => handleDelete(pic.id , event)}>DELETE</button>
-          <button onClick={() => handleLikes(pic.id)}>LIKE</button>
+          
           
         </ImageListItem>
       ))}

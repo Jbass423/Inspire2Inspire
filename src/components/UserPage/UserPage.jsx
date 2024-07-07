@@ -18,6 +18,7 @@ function UserPage() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_IMAGE'})
+  
   })
 
 

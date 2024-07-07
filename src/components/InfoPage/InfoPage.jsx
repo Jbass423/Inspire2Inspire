@@ -45,7 +45,7 @@ const InfoPage = () => {
             <h3>{`Image ${img.id}`}</h3>
             <p>{img.description}</p>
             <button onClick={() => handleImageClick(img.id)}><PanoramaIcon/></button>
-            <button onClick={()=> handleFav(img)}>add to fav</button>
+            
           </div>
         </div>
       ))}
