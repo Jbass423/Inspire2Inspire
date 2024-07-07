@@ -6,6 +6,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 5001;
 const imagesRouter = require('./routes/template.router');
 const poemsRouter = require('./routes/poems.router')
+const favRouter = require('./routes/favorites.router')
 
 // Middleware Includes
 const sessionMiddleware = require('./modules/session-middleware');
@@ -30,6 +31,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/images', imagesRouter);
 app.use('/api/poems', poemsRouter)
+app.use('/api/favorites', favRouter)
 app.get('/api/images/:imageId', (req, res) => {
   const imageId = parseInt(req.params.imageId);
   const image = images.find(img => img.id === imageId);
