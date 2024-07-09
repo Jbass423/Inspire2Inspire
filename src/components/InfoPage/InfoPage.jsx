@@ -26,6 +26,8 @@ const InfoPage = () => {
   }
 
   return (
+    <>
+    <h2><b>Take a look at the world from a different view</b></h2>
     <div style={{
       padding: '20px',
       borderRadius: '8px',
@@ -40,16 +42,18 @@ const InfoPage = () => {
           style={{ cursor: 'pointer', maxWidth: '345px', margin: '10px', border: '1px solid #ccc', borderRadius: '8px', overflow: 'hidden' }}
           
         >
-          <Image src={img.url} alt={`Image ${img.id}`} width="250" preview />
+          <Image src={img.url} alt={`Image ${img.id}`} width="200" preview />
           <div style={{ padding: '10px' }}>
-            <h3>{`Image ${img.id}`}</h3>
+            <h3>Take a look</h3>
             <p>{img.description}</p>
             <button onClick={() => handleImageClick(img.id)}><PanoramaIcon/></button>
+            
             
           </div>
         </div>
       ))}
     </div>
+    </>
   );
 }
 

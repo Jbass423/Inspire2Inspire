@@ -6,7 +6,14 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import UserImages from './UserImages';
 import UserPost from './UserPost';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import './UserPage.css'
+import UserPoems from './UserPoems';
+import CommentSection from '../CommentSection/CommentSection';
+import { color } from 'framer-motion';
+
 
 
 function UserPage() {
@@ -27,16 +34,29 @@ function UserPage() {
     <>
       <div className="container">
         <h2>Welcome, {user.username}!</h2>
-        <p>Your ID is: {user.id}</p>
-        <p> your bio: {user.bio}</p>
-        <LogOutButton className="btn" />
+        <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="xsm">
+       
+        <Box sx={{ bgcolor: '#cfe8fc', height: '3cm',  }} >
+        <p>  Bio:<b> {user.bio}</b></p>
+        </Box>
+      </Container>
+    </React.Fragment>
+
+       
       </div>
       
       <UserPost />
+      
       <UserImages />
+      <UserPoems/>
+      <h2>Add some inspiration</h2>
+      <CommentSection/>
+      <LogOutButton className="btn" />
     </>
   );
 }
 
-// this allows us to use <App /> in index.js
+
 export default UserPage;

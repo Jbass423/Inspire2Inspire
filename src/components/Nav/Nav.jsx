@@ -43,7 +43,7 @@ function Nav() {
                 Home
               </Button>
               <Button color="inherit" component={Link} to="/info">
-                Info Page
+                Gallery
               </Button>
               
             </>
