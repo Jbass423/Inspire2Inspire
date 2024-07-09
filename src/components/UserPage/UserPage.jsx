@@ -38,7 +38,7 @@ function UserPage() {
       <CssBaseline />
       <Container maxWidth="xsm">
        
-        <Box sx={{ bgcolor: '#cfe8fc', height: '3cm',  }} >
+      <Box sx={{ bgcolor: '#000000', height: '5cm' }} >
         <p>  Bio:<b> {user.bio}</b></p>
         </Box>
       </Container>

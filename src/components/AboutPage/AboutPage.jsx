@@ -9,6 +9,7 @@ import "./AboutPage.css"
 
 function AboutPage() {
   return (
+    <>
     <div className="container">
     
     <React.Fragment>
@@ -24,9 +25,10 @@ function AboutPage() {
                  </b>
               </p>
               <h2>
-                github:
+                Contact info:
+                
                  https://github.com/Jbass423
-              linkedin:
+              
                www.linkedin.com/in/joshuabass423</h2>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -37,6 +39,33 @@ function AboutPage() {
       </Container>
     </React.Fragment>
   </div>
+
+  <div> 
+    <h2>Technologies used to make this website</h2>
+    <h2><ul>
+      <li> React </li>
+      <li> Redux </li>
+      <li>JS</li>
+      <li> Node.js</li>
+      <li> Mui </li>
+      <li> Express</li>
+      <li> SQL </li>
+      <li> Postgres</li>
+      </ul></h2>
+    
+  </div>
+  <div>
+    <h2> Coming soon to Inspire2Inspire ..... </h2>
+    <h2>
+      <ol>
+        <li> More interactive for the user to visit other user pages</li>
+        <li> Page to commission artist and writers</li>
+        <li>Give the user the ability to add any art or poem to a favorites</li>
+        <li> Tags and filters to narrow down to what you only want to see</li>
+      </ol>
+    </h2>
+  </div>
+  </>
   );
 }
 

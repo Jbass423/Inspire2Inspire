@@ -15,7 +15,7 @@ const UserPost = () => {
 
     return (
             <>
-            <h2> Share your work with the world </h2>
+            <h2> Share your Art with the world </h2>
         <form onSubmit={sendImage}>
             <label htmlFor="imageUrl">URL</label>
             <input

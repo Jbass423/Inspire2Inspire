@@ -68,7 +68,7 @@ const DetailComments = ({ imageId }) => {
       {filteredComments.length === 0 ? (
         <p>No comments for this image</p>
       ) : (
-        <TableContainer component={Paper} style={{ maxHeight: '400px', overflow: 'auto' }}>
+        <TableContainer component={Paper} style={{   maxHeight: '450px', overflow: 'auto' }}>
           <Table>
             <TableHead>
               <TableRow>
