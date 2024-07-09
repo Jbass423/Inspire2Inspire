@@ -1,9 +1,22 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Unstable_Grid2';
 import CommentMapping from '../CommentSection/CommentMapping';
 import CommentSection from '../CommentSection/CommentSection';
 import DetailComments from './DetailComments';
+import InfoPage from '../InfoPage/InfoPage';
+
+const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
 
 const ImageDetails = () => {
   const { imageId } = useParams();
@@ -30,15 +43,24 @@ const ImageDetails = () => {
   }
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ marginRight: '20px' }}>
-      <h2>Look at this art</h2>
-      <img src={image.url} alt={`Image ${image.id}`} style={{ maxWidth: '400px', maxHeight: '400px' }} />
-    </div>
-    <div>
-      <DetailComments imageId={image.id} />
-    </div>
-  </div>
+    <>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid xs={7}>
+          
+            <h2>Here is some inspiration</h2>
+            <img src={image.url} alt={`Image ${image.id}`} style={{ maxWidth: '900px', maxHeight: '550px', padding:"25px"}} />
+          
+        </Grid>
+        <Grid xs={5}>
+          <Item>
+            <DetailComments imageId={image.id} />
+          </Item>
+        </Grid>
+      </Grid>
+    </Box>
+    <InfoPage />
+    </>
   );
 };
 

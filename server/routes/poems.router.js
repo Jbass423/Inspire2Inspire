@@ -92,4 +92,18 @@ router.put('/likes/:id', (req, res) => {
 });
 
 
+  router.get('/user/:id', (req, res) => {
+    const userId = req.params.id;
+    const queryText = `SELECT * FROM poems WHERE user_id = $1`;
+      pool.query(queryText, [userId])
+        .then(result => {
+          res.send(result.rows);
+      })
+        .catch(err => {
+          console.log('Error fetching poems', err);
+          res.sendStatus(500);
+      });
+});
+
+
 module.exports = router;

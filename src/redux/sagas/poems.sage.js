@@ -47,11 +47,21 @@ function* deletePoem(action) {
     }
 }
 
+function* fetchPoemsByUserId(action) {
+    try {
+        const response = yield axios.get(`/api/poems/user/${action.payload}`);
+        yield put({ type: 'SET_POEMS', payload: response.data });
+    } catch (e) {
+        console.error('Failed to fetch poems', e);
+    }
+}
+
 function* poemsSaga() {
     yield takeLatest('FETCH_POEMS', fetchPoems)
     yield takeLatest('ADD_POEM', addPoem)
     yield takeLatest('DELETE_POEM', deletePoem)
     yield takeLatest('ADD_LIKE', addLike)
+    yield takeLatest('FETCH_POEMS_BY_USER_ID', fetchPoemsByUserId)
 }
 
 export default poemsSaga

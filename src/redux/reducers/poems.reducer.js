@@ -11,7 +11,11 @@ const poems = (state= [], action) =>{
         case  "ADD_LIKE":
                 return state.map(poem => 
                     poem.id === action.payload.id ? { ...poem, likes: poem.likes + 1 } : poem
-                );        
+                );      
+                case  "REMOVE_LIKE":
+                    return state.map(poem => 
+                        poem.id === action.payload.id ? { ...poem, likes: poem.likes - 1 } : poem
+                    );                  
         default:
              return state    
     }

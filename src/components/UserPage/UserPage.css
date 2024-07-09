@@ -3,3 +3,8 @@ h2{color: rgb(5, 238, 56);
 border: 12px black solid;
 }
 
+p{
+font-size: larger;
+border: 3px white solid;
+padding-left: 2cm;
+padding-right: 2cm;}

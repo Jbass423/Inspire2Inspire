@@ -24,7 +24,7 @@ const CommentSection = ({ imageId }) => {
         onInit={(_evt, editor) => (editorRef.current = editor)}
         initialValue="Add your poem here"
         init={{
-          height: 200,
+          height: 400,
           menubar: false,
           plugins: [
             'advlist autolink lists link image charmap preview',
